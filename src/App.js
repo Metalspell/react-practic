@@ -16,9 +16,25 @@ class MovieItem extends React.Component {
   constructor () {
     super()
     this.state = {
-      show: false
+      show: false,
+      like: false,
+      counter: 0
     };
   }
+  
+  toggleOverview = () => {
+    this.setState ({
+      show:!this.state.show
+    });
+  }
+
+  handleLike = () => {
+    const { counter } = this.state;
+    this.setState({ counter: counter + 1 });
+    console.log('fuck')
+  }
+
+  
   render() {
     const {data: {title, vote_average, image, overview}} = this.props;
     return (
@@ -26,14 +42,18 @@ class MovieItem extends React.Component {
         <p>{title}</p>
         <p>{vote_average}</p>
         <Image src={image} alt={title} />
-        <button type="button" onClick={() => {
-          this.setState ({
-            show:true
-          })
-        }}
-        >
-        Show description
-        </button>
+        <div className="buttons">
+          <button type="button" onClick={this.toggleOverview}
+          >
+          {this.state.show ? "Hide description" : "Show description"}
+          </button>
+          <div>
+            <p className="counter-of-likes">{this.state.counter}</p>
+            <button type = "button" onClick = {this.handleLike}>
+              Like
+            </button>
+          </div>  
+        </div>
         {this.state.show === true ? <p>{overview} </p> : null}
       </div>
     )

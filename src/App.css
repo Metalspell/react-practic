@@ -1,5 +1,4 @@
 div {
-  display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
@@ -14,4 +13,24 @@ img {
 
 p {
   text-align: center;
+}
+
+div .buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2vw 0vw;
+  border: 0px solid;
+  flex-direction: row;
+}
+
+div .buttons button {
+  margin: 2vw;
+}
+
+div .buttons div {
+  border: 0px solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 }
