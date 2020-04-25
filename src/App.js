@@ -13,6 +13,12 @@ function Image(props) {
 }
 
 class MovieItem extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      show: false
+    };
+  }
   render() {
     const {data: {title, vote_average, image, overview}} = this.props;
     return (
@@ -20,6 +26,15 @@ class MovieItem extends React.Component {
         <p>{title}</p>
         <p>{vote_average}</p>
         <Image src={image} alt={title} />
+        <button type="button" onClick={() => {
+          this.setState ({
+            show:true
+          })
+        }}
+        >
+        Show description
+        </button>
+        {this.state.show === true ? <p>{overview} </p> : null}
       </div>
     )
   }
