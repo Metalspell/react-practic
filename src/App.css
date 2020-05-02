@@ -1,4 +1,10 @@
-div {
+#root {
+  display: flex;
+  flex-direction: column;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.generalFilmWrap {
   flex-direction: column;
   align-content: center;
   justify-content: center;

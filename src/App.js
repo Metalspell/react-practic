@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './moviesData.js';
 
 const movie = {
   title: "Metalhead",
@@ -38,31 +39,31 @@ class MovieItem extends React.Component {
   render() {
     const {data: {title, vote_average, image, overview}} = this.props;
     return (
-      <div>
-        <p>{title}</p>
-        <p>{vote_average}</p>
-        <Image src={image} alt={title} />
-        <div className="buttons">
-          <button type="button" onClick={this.toggleOverview}
-          >
-          {this.state.show ? "Hide description" : "Show description"}
+      <>
+      <p>{title}</p>
+      <p>{vote_average}</p>
+      <Image src={image} alt={title} />
+      <div className="buttons">
+        <button type="button" onClick={this.toggleOverview}
+        >
+        {this.state.show ? "Hide description" : "Show description"}
+        </button>
+        <div>
+          <p className="counter-of-likes">{this.state.counter}</p>
+          <button type = "button" onClick = {this.handleLike}>
+            Like
           </button>
-          <div>
-            <p className="counter-of-likes">{this.state.counter}</p>
-            <button type = "button" onClick = {this.handleLike}>
-              Like
-            </button>
-          </div>  
-        </div>
-        {this.state.show === true ? <p>{overview} </p> : null}
+        </div>  
       </div>
+      {this.state.show === true ? <p>{overview} </p> : null}
+      </>
     )
   }
 }
 
 function App() {
   return (
-    <div>
+    <div className="generalFilmWrap">
       <MovieItem data={movie}/>
     </div>
   );
